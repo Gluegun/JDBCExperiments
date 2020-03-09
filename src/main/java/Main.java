@@ -9,15 +9,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Set;
 
 public class Main {
 
-    public static String url = "jdbc:mysql://localhost:3306/skillbox?useUnicode=true&serverTimezone=Europe/Moscow&characterEncoding=UTF-8";
+    public static String url = "jdbc:mysql://localhost:3306/skillboxcorrect?useUnicode=true&serverTimezone=Europe/Moscow&characterEncoding=UTF-8";
     public static String user = "root";
     public static String pass = "testtest";
 
 
     public static void main(String[] args) {
+
 
         SessionFactory sessionFactory = createSessionFactory();
 
@@ -30,6 +32,7 @@ public class Main {
         System.out.printf("Студент id:%d\nИмя: %s\nВозраст: %d\n", student.getId(), student.getName(), student.getAge());
 
         sessionFactory.close();
+
     }
 
     public static SessionFactory createSessionFactory() {
