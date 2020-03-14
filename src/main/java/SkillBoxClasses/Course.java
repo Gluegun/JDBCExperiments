@@ -1,4 +1,8 @@
+package SkillBoxClasses;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Courses")
@@ -10,18 +14,24 @@ public class Course {
     private String name;
     private int duration;
     private String description;
-    @Column(name = "teacher_id")
-    private int teacherId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Teacher teacher;
     @Column(name = "students_count")
     private int studentsCount;
     private int price;
     @Column(name = "price_per_hour")
     private float pricePerHour;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "subscriptions",
+            joinColumns = {@JoinColumn(name = "course_id")},
+            inverseJoinColumns = {@JoinColumn(name = "student_id")}
+    )
+    private List<Student> students;
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
     private CourseType type;
-
 
     public int getId() {
         return id;
@@ -53,14 +63,6 @@ public class Course {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getTeacherId() {
-        return teacherId;
-    }
-
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
     }
 
     public int getStudentsCount() {
@@ -95,4 +97,19 @@ public class Course {
         this.type = type;
     }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
 }
