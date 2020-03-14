@@ -2,7 +2,9 @@ package Hibernate;
 
 import SkillBoxClasses.Course;
 import SkillBoxClasses.Student;
+import SkillBoxClasses.Subscription;
 import Util.HibernateUtil;
+import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -16,17 +18,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         SessionFactory sessionFactory = HibernateUtil.createSessionFactory();
 
         Session session = sessionFactory.openSession();
-        Course course = session.get(Course.class, 1);
+        Subscription subscription = session.get(Subscription.class, 1);
+
+        System.out.println(subscription.getCourse().getName());
+
+
+        /*Course course = session.get(Course.class, 1);
+
 
         List<Student> studentList = course.getStudents();
 
         System.out.println("Курс: " + course.getName());
         studentList.forEach(student -> System.out.println(student.getName()));
-
+*/
         sessionFactory.close();
 
     }

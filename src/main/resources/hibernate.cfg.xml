@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC.JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/skillbox?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/skillboxcorrect?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">root</property>
         <property name="connection.password">testtest</property>
         <!-- JDBC.JDBC connection pool settings ... using built-in test pool -->
@@ -22,6 +22,8 @@
         <mapping class="SkillBoxClasses.Course"></mapping>
         <mapping class="SkillBoxClasses.Student"></mapping>
         <mapping class="SkillBoxClasses.Teacher"></mapping>
+        <mapping class="SkillBoxClasses.Subscription"></mapping>
+        <mapping class="SkillBoxClasses.idComposite"></mapping>
 
     </session-factory>
 </hibernate-configuration>
