@@ -8,11 +8,10 @@ import java.util.Objects;
 @Embeddable
 public class idComposite implements Serializable {
 
-
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     private Student student;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     private Course course;
 
 
