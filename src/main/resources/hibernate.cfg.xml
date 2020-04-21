@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC.JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/skillboxcorrect?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/skillbox?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">root</property>
         <property name="connection.password">testtest</property>
         <!-- JDBC.JDBC connection pool settings ... using built-in test pool -->
@@ -17,13 +17,14 @@
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="SkillBoxClasses.Course"></mapping>
-        <mapping class="SkillBoxClasses.Student"></mapping>
-        <mapping class="SkillBoxClasses.Teacher"></mapping>
-        <mapping class="SkillBoxClasses.Subscription"></mapping>
-        <mapping class="SkillBoxClasses.idComposite"></mapping>
+        <mapping class="SkillBoxClasses.Course"/>
+        <mapping class="SkillBoxClasses.Student"/>
+        <mapping class="SkillBoxClasses.Teacher"/>
+        <mapping class="SkillBoxClasses.Subscription"/>
+        <mapping class="SkillBoxClasses.idComposite"/>
+        <mapping class="SkillBoxClasses.LinkedPurchaseList"/>
 
     </session-factory>
 </hibernate-configuration>

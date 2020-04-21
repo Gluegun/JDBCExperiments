@@ -1,8 +1,9 @@
 package SkillBoxClasses;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -11,41 +12,39 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     private int id;
+
+    @Getter
+    @Setter
     private String name;
+
+    @Getter
+    @Setter
     private int age;
+
     @Column(name = "registration_date")
+    @Getter
+    @Setter
     private Date registrationDate;
 
-    public int getId() {
-        return id;
+    public Student() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Student(String name, int age, Date registrationDate) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
         this.age = age;
-    }
-
-    public Date getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", registrationDate=" + registrationDate +
+                '}';
     }
 }

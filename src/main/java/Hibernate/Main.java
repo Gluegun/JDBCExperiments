@@ -1,9 +1,6 @@
 package Hibernate;
 
-import SkillBoxClasses.Course;
-import SkillBoxClasses.Student;
-import SkillBoxClasses.Subscription;
-import SkillBoxClasses.idComposite;
+import SkillBoxClasses.*;
 import Util.HibernateUtil;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
@@ -35,21 +32,14 @@ public class Main {
 
         });
 
-//        Subscription subscription = session.get(Subscription.class,);
-//        System.out.println(subscription.getComId().getCourse().getName());
+//
+        session.beginTransaction();
+//        session.save();
+        session.getTransaction().commit();
 
-//        System.out.println(subscription.getComId().getCourse().getName());
-
-
-        /*Course course = session.get(Course.class, 1);
-
-
-        List<Student> studentList = course.getStudents();
-
-        System.out.println("Курс: " + course.getName());
-        studentList.forEach(student -> System.out.println(student.getName()));
-*/
+        session.close();
         sessionFactory.close();
+
 
     }
 
