@@ -1,11 +1,15 @@
-package SkillBoxClasses;
+package Entities;
 
-import javax.persistence.*;
+import lombok.Data;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
+import javax.persistence.OneToOne;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
 
 @Embeddable
+@Data
 public class idComposite implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -14,24 +18,8 @@ public class idComposite implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private Course course;
 
-
     public idComposite() {
-    }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
     }
 
     @Override

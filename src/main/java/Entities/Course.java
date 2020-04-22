@@ -1,50 +1,34 @@
-package SkillBoxClasses;
+package Entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Courses")
+@Data
 public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private int id;
 
-    @Getter
-    @Setter
     private String name;
 
-    @Getter
-    @Setter
     private int duration;
 
-    @Getter
-    @Setter
     private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @Getter
-    @Setter
     private Teacher teacher;
 
     @Column(name = "students_count")
-    @Getter
-    @Setter
     private int studentsCount;
 
-    @Getter
-    @Setter
     private int price;
 
     @Column(name = "price_per_hour")
-    @Getter
-    @Setter
     private float pricePerHour;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -52,14 +36,10 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id")
     )
-    @Getter
-    @Setter
     private List<Student> students;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
-    @Getter
-    @Setter
     private CourseType type;
 
     public Course() {

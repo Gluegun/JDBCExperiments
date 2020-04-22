@@ -1,4 +1,4 @@
-package SkillBoxClasses;
+package Entities;
 
 public enum CourseType {
     PROGRAMMING,

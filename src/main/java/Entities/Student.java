@@ -1,5 +1,6 @@
-package SkillBoxClasses;
+package Entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,28 +9,22 @@ import java.util.Date;
 
 @Entity
 @Table(name = "Students")
+@Data
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private int id;
 
-    @Getter
-    @Setter
     private String name;
 
-    @Getter
-    @Setter
     private int age;
 
     @Column(name = "registration_date")
-    @Getter
-    @Setter
     private Date registrationDate;
 
     public Student() {
+
     }
 
     public Student(String name, int age, Date registrationDate) {

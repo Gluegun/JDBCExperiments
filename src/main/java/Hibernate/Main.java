@@ -1,25 +1,20 @@
 package Hibernate;
 
-import SkillBoxClasses.*;
-import Util.HibernateUtil;
-import org.hibernate.LockMode;
+import Entities.*;
+import Util.SessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import javax.persistence.Id;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        SessionFactory sessionFactory = HibernateUtil.createSessionFactory();
+        SessionFactory sessionFactory = SessionFactoryUtil.createSessionFactory();
 
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
 
         List<Subscription>resultList = session.createQuery("FROM "
                 + Subscription.class.getSimpleName()).getResultList();
@@ -33,7 +28,6 @@ public class Main {
         });
 
 //
-        session.beginTransaction();
 //        session.save();
         session.getTransaction().commit();
 

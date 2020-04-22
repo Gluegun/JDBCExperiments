@@ -1,10 +1,7 @@
 package Hibernate;
 
-import SkillBoxClasses.Course;
-import SkillBoxClasses.LinkedPurchaseList;
-import SkillBoxClasses.Student;
-import SkillBoxClasses.Subscription;
-import Util.HibernateUtil;
+import Entities.*;
+import Util.SessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -15,7 +12,7 @@ public class LinkedPurchaseListTableCreator {
 
     public static void main(String[] args) {
 
-        SessionFactory sessionFactory = HibernateUtil.createSessionFactory();
+        SessionFactory sessionFactory = SessionFactoryUtil.createSessionFactory();
 
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -32,13 +29,24 @@ public class LinkedPurchaseListTableCreator {
 
 
         List<LinkedPurchaseList> linkedPurchaseLists = new ArrayList<>();
+//
+//        for (int i = 0; i < courses.size(); i++) {
+//            linkedPurchaseLists.add(new LinkedPurchaseList(
+//                    students.get(i).getId(), courses.get(i).getId(),students.get(i).getName(),courses.get(i).getName(),
+//                    students.get(i).getRegistrationDate(), courses.get(i).getPrice()
+//            ));
+//        }
 
-        for (int i = 0; i < courses.size() ; i++) {
-            linkedPurchaseLists.add(new LinkedPurchaseList(courses.get(i).getId(), students.get(i).getId()));
+        for (int i = 0; i < courses.size(); i++) {
+            linkedPurchaseLists.add(new LinkedPurchaseList(
+                    students.get(i).getId(), courses.get(i).getId()
+            ));
         }
+
 
         linkedPurchaseLists.forEach(session::save);
 
+        linkedPurchaseLists.forEach(System.out::println);
 
         session.close();
         sessionFactory.close();

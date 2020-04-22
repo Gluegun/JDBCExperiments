@@ -19,12 +19,13 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="SkillBoxClasses.Course"/>
-        <mapping class="SkillBoxClasses.Student"/>
-        <mapping class="SkillBoxClasses.Teacher"/>
-        <mapping class="SkillBoxClasses.Subscription"/>
-        <mapping class="SkillBoxClasses.idComposite"/>
-        <mapping class="SkillBoxClasses.LinkedPurchaseList"/>
+        <mapping class="Entities.Course"/>
+        <mapping class="Entities.Student"/>
+        <mapping class="Entities.Teacher"/>
+        <mapping class="Entities.Subscription"/>
+        <mapping class="Entities.idComposite"/>
+        <mapping class="Entities.LinkedPurchaseList"/>
+        <mapping class="Entities.StudentIdAndCourseIdKey"/>
 
     </session-factory>
 </hibernate-configuration>
