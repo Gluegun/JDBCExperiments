@@ -1,4 +1,4 @@
-package Entities;
+package Enum;
 
 public enum CourseType {
     PROGRAMMING,

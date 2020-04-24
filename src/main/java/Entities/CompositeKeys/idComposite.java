@@ -1,5 +1,7 @@
-package Entities;
+package Entities.CompositeKeys;
 
+import Entities.Course;
+import Entities.Student;
 import lombok.Data;
 
 import javax.persistence.CascadeType;

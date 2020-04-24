@@ -1,14 +1,14 @@
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "-//App.Hibernate/App.Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- JDBC.JDBC Database connection settings -->
+        <!-- App.JDBC.App.JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/skillbox?useSSL=false&amp;serverTimezone=UTC</property>
         <property name="connection.username">root</property>
         <property name="connection.password">testtest</property>
-        <!-- JDBC.JDBC connection pool settings ... using built-in test pool -->
+        <!-- App.JDBC.App.JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">10</property>
         <!-- Select our SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -23,9 +23,10 @@
         <mapping class="Entities.Student"/>
         <mapping class="Entities.Teacher"/>
         <mapping class="Entities.Subscription"/>
-        <mapping class="Entities.idComposite"/>
+        <mapping class="Entities.CompositeKeys.idComposite"/>
         <mapping class="Entities.LinkedPurchaseList"/>
-        <mapping class="Entities.StudentIdAndCourseIdKey"/>
+        <mapping class="Entities.CompositeKeys.StudentIdAndCourseIdKey"/>
+        <mapping class="Entities.PurchaseList"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package Hibernate;
+package App.Hibernate;
 
 import Entities.*;
 import Util.SessionFactoryUtil;
@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class Main {
+public class SubscriptionsGetter {
 
     public static void main(String[] args) {
 
@@ -26,9 +26,6 @@ public class Main {
             System.out.println("==========");
 
         });
-
-//
-//        session.save();
         session.getTransaction().commit();
 
         session.close();

@@ -1,4 +1,4 @@
-package Entities;
+package Entities.CompositeKeys;
 
 import lombok.Data;
 
@@ -14,5 +14,6 @@ public class StudentIdAndCourseIdKey implements Serializable {
     private int studentId;
 
     public StudentIdAndCourseIdKey() {
+
     }
 }

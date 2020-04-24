@@ -1,6 +1,7 @@
 package Entities;
 
 import lombok.Data;
+import Enum.CourseType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,7 +21,8 @@ public class Course {
 
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private Teacher teacher;
 
     @Column(name = "students_count")

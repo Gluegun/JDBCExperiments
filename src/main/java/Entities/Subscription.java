@@ -1,5 +1,6 @@
 package Entities;
 
+import Entities.CompositeKeys.idComposite;
 import lombok.Data;
 
 import javax.persistence.*;

@@ -1,5 +1,6 @@
 package Entities;
 
+import Entities.CompositeKeys.StudentIdAndCourseIdKey;
 import lombok.Data;
 
 import javax.persistence.*;
