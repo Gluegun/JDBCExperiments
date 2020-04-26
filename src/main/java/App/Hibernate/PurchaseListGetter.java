@@ -18,7 +18,7 @@ public class PurchaseListGetter {
         try {
             session.beginTransaction();
 
-            List<PurchaseList> purchaseLists = session.createQuery("from PurchaseList").getResultList();
+            List<PurchaseList> purchaseLists = session.createQuery("from PurchaseList", PurchaseList.class).getResultList();
 
             purchaseLists.forEach(purchaseList -> {
 

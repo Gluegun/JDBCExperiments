@@ -23,52 +23,55 @@ public class LinkedPurchaseListTableCreatorViaPurchaseList {
         try {
             session.beginTransaction();
 
-            List<PurchaseList> purchaseLists = session.createQuery("FROM " + PurchaseList.class.getSimpleName()).getResultList();
+            List<PurchaseList> purchaseLists = session.createQuery(
+                    "FROM " + PurchaseList.class.getSimpleName(), PurchaseList.class
+            ).getResultList();
 
-            List<Student> students = session.createQuery("FROM " + Student.class.getSimpleName()).getResultList();
+            List<Student> students = session.createQuery(
+                    "FROM " + Student.class.getSimpleName(), Student.class
+            ).getResultList();
 
-            List<Course> courses = session.createQuery("FROM " + Course.class.getSimpleName()).getResultList();
-
-            List<Integer> studentsId = new ArrayList<>();
-            List<Integer> coursesId = new ArrayList<>();
-            List<String> studentNames = new ArrayList<>();
-            List<String> courseNames = new ArrayList<>();
-            List<Integer> coursePrices = new ArrayList<>();
-            List<Date> subscriptionDates = new ArrayList<>();
-
-
-            purchaseLists.forEach(purchaseList -> {
-                String studentName = purchaseList.getStudentName();
-                students.forEach(student -> {
-                    if (student.getName().equalsIgnoreCase(studentName)) {
-                        studentsId.add(student.getId());
-                        studentNames.add(student.getName());
-                        subscriptionDates.add(student.getRegistrationDate());
-                    }
-                });
-                String courseName = purchaseList.getCourseName();
-                courses.forEach(course -> {
-                    if (course.getName().equalsIgnoreCase(courseName)) {
-                        coursesId.add(course.getId());
-                        courseNames.add(course.getName());
-                        coursePrices.add(course.getPrice());
-                    }
-                });
-            });
+            List<Course> courses = session.createQuery(
+                    "FROM " + Course.class.getSimpleName(), Course.class
+            ).getResultList();
 
             List<LinkedPurchaseList> linkedPurchaseLists = new ArrayList<>();
 
-            for (int i = 0; i < purchaseLists.size(); i++) {
+            for (PurchaseList purchaseList : purchaseLists) {
+
+                String studentName = purchaseList.getStudentName();
+                String courseName = purchaseList.getCourseName();
+                int price = purchaseList.getPrice();
+                Date subscriptionDate = purchaseList.getSubscriptionDate();
+                
+                int studentId = 0;
+                int courseId = 0;
+
+                for (Student student : students) {
+                    if (purchaseList.getStudentName().equalsIgnoreCase(student.getName())) {
+                        studentId = student.getId();
+                    }
+                }
+
+                for (Course course : courses) {
+                    if (purchaseList.getCourseName().equalsIgnoreCase(course.getName())) {
+                        courseId = course.getId();
+                    }
+                }
+
                 linkedPurchaseLists.add(new LinkedPurchaseList(
-                        studentsId.get(i), coursesId.get(i), studentNames.get(i), courseNames.get(i),
-                        subscriptionDates.get(i), coursePrices.get(i)));
+                        studentId, courseId, studentName, courseName, subscriptionDate, price
+                ));
             }
 
-//            linkedPurchaseLists.forEach(System.out::println);
+            System.out.println(purchaseLists.size());
+
+
+            linkedPurchaseLists.forEach(System.out::println);
+
             linkedPurchaseLists.forEach(session::save);
 
             session.getTransaction().commit();
-
 
 
         } finally {

@@ -17,7 +17,9 @@ public class LinkedPurchaseListTableCreatorViaSubscriptions {
         Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
 
-        List<Subscription> subscriptions = session.createQuery("From " + Subscription.class.getSimpleName()).getResultList();
+        List<Subscription> subscriptions = session.createQuery(
+                "From " + Subscription.class.getSimpleName(), Subscription.class
+        ).getResultList();
 
         List<Course> courses = new ArrayList<>();
         List<Student> students = new ArrayList<>();
