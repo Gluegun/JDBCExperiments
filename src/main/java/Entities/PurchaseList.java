@@ -20,7 +20,7 @@ public class PurchaseList {
     @Column(name = "course_name")
     private String courseName;
 
-    private int price;
+    private Integer price;
 
     @Column(name = "subscription_date")
     private Date subscriptionDate;

@@ -17,7 +17,7 @@ public class Course {
 
     private String name;
 
-    private int duration;
+    private Integer duration;
 
     private String description;
 
@@ -28,10 +28,10 @@ public class Course {
     @Column(name = "students_count")
     private Integer studentsCount;
 
-    private int price;
+    private Integer price;
 
     @Column(name = "price_per_hour")
-    private float pricePerHour;
+    private Float pricePerHour;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "subscriptions",

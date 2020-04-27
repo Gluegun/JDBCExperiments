@@ -15,7 +15,7 @@ public class Teacher {
 
     private String name;
 
-    private int salary;
+    private Integer salary;
 
-    private int age;
+    private Integer age;
 }

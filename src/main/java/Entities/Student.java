@@ -16,7 +16,7 @@ public class Student {
 
     private String name;
 
-    private int age;
+    private Integer age;
 
     @Column(name = "registration_date")
     private Date registrationDate;

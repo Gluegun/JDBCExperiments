@@ -16,15 +16,15 @@ public class SubscriptionsGetter {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        List<Subscription>resultList = session.createQuery("FROM "
-                + Subscription.class.getSimpleName()).getResultList();
+        List<Subscription> resultList = session.createQuery(
+                "FROM " + Subscription.class.getSimpleName(), Subscription.class)
+                .getResultList();
 
         resultList.forEach(subscription -> {
             System.out.println(subscription.getComId().getStudent().getName());
             System.out.println(subscription.getComId().getCourse().getName());
             System.out.println(subscription.getSubscriptionDate());
             System.out.println("==========");
-
         });
         session.getTransaction().commit();
 

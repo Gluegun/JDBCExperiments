@@ -30,7 +30,7 @@ public class LinkedPurchaseList {
     @Column(name = "subscription_date")
     private Date subscriptionDate;
 
-    private int price;
+    private Integer price;
 
 
     public LinkedPurchaseList() {

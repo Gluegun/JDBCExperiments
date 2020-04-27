@@ -24,16 +24,16 @@ public class LinkedPurchaseListTableCreatorViaPurchaseList {
             session.beginTransaction();
 
             List<PurchaseList> purchaseLists = session.createQuery(
-                    "FROM " + PurchaseList.class.getSimpleName(), PurchaseList.class
-            ).getResultList();
+                    "FROM " + PurchaseList.class.getSimpleName(), PurchaseList.class)
+                    .getResultList();
 
             List<Student> students = session.createQuery(
-                    "FROM " + Student.class.getSimpleName(), Student.class
-            ).getResultList();
+                    "FROM " + Student.class.getSimpleName(), Student.class)
+                    .getResultList();
 
             List<Course> courses = session.createQuery(
-                    "FROM " + Course.class.getSimpleName(), Course.class
-            ).getResultList();
+                    "FROM " + Course.class.getSimpleName(), Course.class)
+                    .getResultList();
 
             List<LinkedPurchaseList> linkedPurchaseLists = new ArrayList<>();
 
